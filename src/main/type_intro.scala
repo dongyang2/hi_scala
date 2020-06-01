@@ -43,7 +43,10 @@ object type_intro {
     val m2 = s"Oh, ${l2}!"
     println(m2)
 
-    // null
+    // 查看类型
+    println("type of m2(full name) \t%s".format(m2.getClass))
+    println("type of f(simple name) \t%s".format(f.getClass.getSimpleName))
+
 
   }
 }

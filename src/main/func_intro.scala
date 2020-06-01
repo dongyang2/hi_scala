@@ -9,6 +9,8 @@ object func_intro {
     println(say_hi_again(s))
 
     println(add(1, 2))
+
+    hello_world()
   }
 
   // 写函数的格式  函数名（参数 ： 参数类型） ： 返回类型 = { 函数内容 }
@@ -22,4 +24,9 @@ object func_intro {
 
   // 大括号在只有一个表达式时可以省略
   def add(x:Int, y:Int):Int = x+y
+
+  // 函数输入参数可以设置默认值
+  def hello_world(say_hi_to:String="world"): Unit ={
+    println(s"Hello! ${say_hi_to}!")
+  }
 }

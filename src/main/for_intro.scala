@@ -1,6 +1,7 @@
 // 循环语句。学习
 package main
 
+import scala.util.control.Breaks
 object for_intro {
   def main(args: Array[String]): Unit = {
     // scala支持for，while，do while语句
@@ -19,11 +20,21 @@ object for_intro {
     while (i<3){
       println("abc")
       i+=1
+
     }
 
     do{
       println('w')
       i+=1
     }while(i < 4)
+
+    // break
+    i = 1
+    while (i<10){
+      println("lala %s".format(i))
+      i+=1
+      Breaks.break
+    }
+
   }
 }

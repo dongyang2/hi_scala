@@ -5,8 +5,15 @@ object iter_intro {
   def main(args: Array[String]): Unit = {
     var li = Iterator("Runoob", "abc", "oh")
 
-    while (li.hasNext){
-      println(li.next())
+    // next遍历法
+//    while (li.hasNext){
+//      println(li.next())
+//    }
+
+    // 普通遍历法
+    println("普通遍历法")
+    for (i <- li){
+      println(i)
     }
 
     // 迭代器自带求最大，最小值
