@@ -62,10 +62,15 @@ object arr_intro {
     cut_line()
 
     // 取前几个元素
-    val k:Int = 1
+    val k:Int = 2
     val first_k_matrix = sort_matrix.take(k)
     erg_matrix(first_k_matrix)
     cut_line()
+
+    // 取第一个
+    println("First " +arr3.head)
+    // 取最后一个
+    println("Last " +arr3.last)
 
     val f_k_m2 = sort_matrix.take(2)
     erg_matrix(f_k_m2)
