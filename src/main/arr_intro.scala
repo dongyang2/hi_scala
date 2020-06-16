@@ -1,5 +1,7 @@
+/* coding: utf-8 */
 // 数组。学习。
 package main
+import func_intro._
 
 object arr_intro {
   def main(args: Array[String]): Unit = {
@@ -10,7 +12,7 @@ object arr_intro {
     val arr2:Array[String] = new Array[String](2)
 
     // 申明 3
-    var arr3 = Array("Forth", "Fifth", "Sixth")
+    val arr3 = Array("Forth", "Fifth", "Sixth")
 
     // 赋值
     arr1(0) = "zero"
@@ -39,6 +41,7 @@ object arr_intro {
     println(arr1.length)
 
     // 合并数组
+
     val con_arr = Array.concat(arr1, arr2)
     erg_arr_str(con_arr)
 
@@ -94,14 +97,19 @@ object arr_intro {
     // tuple的取值方式也不一样
     println(tuple3._3)
 
-
-
 //    val nums = Seq(("h",1),("w",2),("e",5),("i",3),("f",4))
 //    val nums_sort = nums.sortBy( tuple => tuple._2)
 //    for (i <- nums_sort.indices){
 //      print(nums_sort(i) + " ")
 //      println()
 //    }
+
+    // 数组里如果全是两个元素的tuple，则可以直接toMap
+    cut_line()
+    val arr4 = Array(("1", 1), ("2", 2), ("3", 3))
+    val map1 = arr4.toMap
+//    map1.foreach(println)
+    println("查看是否转换成功",map1("2"))
 
   }
 
@@ -122,7 +130,5 @@ object arr_intro {
     }
   }
 
-  def cut_line(): Unit ={
-    println("-*-*-*-*------")
-  }
+
 }

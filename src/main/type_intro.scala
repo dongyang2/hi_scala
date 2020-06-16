@@ -1,5 +1,8 @@
+/* coding: utf-8 */
 // 变量数据类型。学习。
 package main
+import func_intro.cut_line
+import java.text.DecimalFormat
 
 object type_intro {
   def main(args: Array[String]): Unit = {
@@ -47,6 +50,22 @@ object type_intro {
     println("type of m2(full name) \t%s".format(m2.getClass))
     println("type of f(simple name) \t%s".format(f.getClass.getSimpleName))
 
+    cut_line()
+    // *1.0 可以让结果变成小数
+    val sub = (f+e.toInt)*1.0/3
+    println(sub)
+    println(sub.getClass.getSimpleName)
+    // 然后利用Java的decimal format规范输出
+    val vale = new DecimalFormat("0.000").format(sub)
+    println(vale)
 
+
+    cut_line()
+    val sub2 = i*2/3
+    println(format_decimal(sub2))
+  }
+
+  def format_decimal(num:Double, num_pat:String="0.00"): String ={
+    new DecimalFormat(num_pat).format(num)
   }
 }
