@@ -1,14 +1,18 @@
+/* coding: utf-8 */
 // 文件读写，读命令行界面输入。学习。
 package main
+
+import java.io.{File, PrintWriter}
 
 object io_intro {
   def main(args: Array[String]): Unit = {
 //    // 写文件
-//    import java.io._
 
 //    val file_write = new PrintWriter(new File("what.txt"))
 //    file_write.write("scala io")
 //    file_write.close()
+    val arr = Array("ho", "Ah", "hey")
+    write_file_arr("ha.txt", arr)
 
     // 读文件
     import scala.io.Source
@@ -36,4 +40,11 @@ object io_intro {
     }
   }
 
+  def write_file_arr(path:String, arr:Array[String]){
+    val file_iter_write = new PrintWriter(new File(path))  // 总是会创建新文件，如果已存在该文件，则会进行覆盖写入
+    for(i<-arr.indices){
+      file_iter_write.write(arr(i)+"\n")
+    }
+    file_iter_write.close()  // 不加这行写不进去
+  }
 }

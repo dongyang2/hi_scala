@@ -1,3 +1,4 @@
+/* coding: utf-8 */
 // 日期操作。学习。
 
 package main
@@ -31,6 +32,7 @@ object time_intro {
     println(get_n_day_after_date(string_to_date(get_today_cal()), 3))
     cut_line()
 
+    println(get_n_day_before_date(string_to_date(get_today_cal()), -1))
   }
 
   def get_today(): Array[String] ={
@@ -48,6 +50,7 @@ object time_intro {
   }
 
   def get_yesterday(pat:String="yyyyMMdd"): String ={
+    // pat指返回的日期格式
     val dateFormat = new SimpleDateFormat(pat)
     val calendar = Calendar.getInstance
     calendar.set(Calendar.HOUR_OF_DAY, -24)
@@ -71,6 +74,7 @@ object time_intro {
   }
 
   def get_n_day_before_date(date:Date, n:Int,pat:String="yyyyMMdd"): String ={
+    // pat指返回的日期格式
     val calendar = Calendar.getInstance
     calendar.setTime(date)
     calendar.set(Calendar.HOUR_OF_DAY, -24*n)
@@ -80,12 +84,14 @@ object time_intro {
   }
 
   def get_today_cal(pat:String="yyyyMMdd"): String ={
+    // pat指返回的日期格式
     val date_format = new SimpleDateFormat(pat)
     val calendar = Calendar.getInstance
     date_format.format(calendar.getTime)
   }
 
   def get_n_day_after_date(date:Date, n:Int,pat:String="yyyyMMdd"): String ={
+    // pat指返回的日期格式
     val calendar = Calendar.getInstance
     calendar.setTime(date)
     calendar.set(Calendar.HOUR_OF_DAY, 24*n)

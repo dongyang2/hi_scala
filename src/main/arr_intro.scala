@@ -3,8 +3,12 @@
 package main
 import func_intro._
 
+import scala.collection.mutable.ArrayBuffer
+
 object arr_intro {
   def main(args: Array[String]): Unit = {
+
+    /* Array */
     // 申明 1
     val arr1 = new Array[String](3)
 
@@ -78,6 +82,32 @@ object arr_intro {
     val f_k_m2 = sort_matrix.take(2)
     erg_matrix(f_k_m2)
 
+    // Array Buffer
+    cut_line("可加减元素的数组 ArrayBuffer")
+    val arr_b1 = new ArrayBuffer[Int]()
+    arr_b1.append(2)  // 添加元素
+    arr_b1.insert(1, 3)  // 按下标添加元素
+    println(arr_b1)
+    arr_b1.remove(1)  // 移除下标为1的元素
+    println(arr_b1)
+    // Array Buffer 实现的二维数组
+    val ab = new ArrayBuffer[ArrayBuffer[String]]()
+    for (_ <- 1 to 2){
+      val tmp = new ArrayBuffer[String]()
+      for (j<- 2 to 4){
+        tmp.append(j.toString)
+      }
+      ab.append(tmp)
+    }
+    println(ab)
+
+    cut_line("聚合数组为字符串")
+    arr_b1.append(9)
+    println(arr_b1.mkString(","))
+
+
+
+    /* Tuple */
     // tuple 直接使用申明
     val tuple1 = (1, -0.5, "abc")
     // tuple 新建对象申明
@@ -110,6 +140,41 @@ object arr_intro {
     val map1 = arr4.toMap
 //    map1.foreach(println)
     println("查看是否转换成功",map1("2"))
+
+
+
+    /* Set */
+    val se1 = Set(1, 1, 1)
+    cut_line("set 不保存重复元素")
+    println(se1)
+
+    val se2 = Set(3, 2, 1)  // scala默认的set是不可变set，无法加元素
+    cut_line("检查是否存在某元素")
+    println(se2.contains(3))
+    cut_line("不可变set删除元素")
+    val se3 = se2.drop(3)  // drop会返回一个按顺序去掉某些元素的set，但不改变当前set
+    println("drop后的新set "+se3)
+    println("drop后的老set "+se2)
+    println(se2.drop(2))
+
+    // 可变set
+    val se4 = scala.collection.mutable.Set(1)
+    cut_line("可变set")
+    se4.add(3)
+    se4.add(3)
+    se4.remove(2)  // 按值删除元素
+    println(se4)
+
+    // 可变set可以指定元素类型"
+    val se5:scala.collection.mutable.Set[String] = scala.collection.mutable.Set()
+    se5.add("hi")
+
+    val se6 = scala.collection.mutable.Set("hello", "yo", "hi", "hey")
+    se5.add("你好")
+    cut_line("set查看交集")
+    val and_set = se5.intersect(se6)
+    println(and_set)
+    println(se5.size)  // 求长度
 
   }
 

@@ -6,6 +6,8 @@ import java.text.DecimalFormat
 
 object type_intro {
   def main(args: Array[String]): Unit = {
+
+    /* Number */
     val a = 10
 
     // var 用来申明变量，val 用来申明常量
@@ -27,10 +29,18 @@ object type_intro {
     println(g)
     println(h)  // 这里的输出是科学计数法或者带小数点
 
+    val fs = f.toString  // 数字可以直接转为字符串
+
+
+
+    /* Boolean */
     val j = true
     val k = false
     println(k)
 
+
+
+    /* String */
     // 字符是单引号
     val l_1 = 'a'
     // 字符串直接搞个双引号就可以了
@@ -43,9 +53,20 @@ object type_intro {
     val m = s"hi, ${l}"
     println(m)
     var l2 = l
-    val m2 = s"Oh, ${l2}!"
+    val m2 = s"Oh, $l2!"  // 新版本scala可以不加大括号
     println(m2)
 
+    cut_line("字符串分割")
+    l.split(l_1).foreach(elem => println(elem))
+    l2 = "id, title, content"
+    l2.split(",").foreach(elem=>println(elem.trim))  // trim()可以去掉字符串的首尾空格
+    println(l1.split(",").length)
+
+
+
+
+    /* Util */
+    cut_line()
     // 查看类型
     println("type of m2(full name) \t%s".format(m2.getClass))
     println("type of f(simple name) \t%s".format(f.getClass.getSimpleName))
@@ -63,9 +84,11 @@ object type_intro {
     cut_line()
     val sub2 = i*2/3
     println(format_decimal(sub2))
+
   }
 
   def format_decimal(num:Double, num_pat:String="0.00"): String ={
     new DecimalFormat(num_pat).format(num)
   }
+
 }

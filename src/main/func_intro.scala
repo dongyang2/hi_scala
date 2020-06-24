@@ -1,3 +1,4 @@
+/* coding: utf-8 */
 // 函数。学习。
 package main
 
@@ -11,6 +12,8 @@ object func_intro {
     println(add_test(1, 2))
 
     hello_world()
+
+    cut_line()
   }
 
   // 写函数的格式  函数名（参数 ： 参数类型） ： 返回类型 = { 函数内容 }
@@ -30,8 +33,13 @@ object func_intro {
     println(s"Hello! ${say_hi_to}!")
   }
 
-  def cut_line(): Unit ={
+  // 没有返回的时候可以不写等号与冒号，还不会报黄方块
+  def cut_line(title:String=""){
     println()
-    println("-*_*_*_*_*-"*3)
+    if (title==""){
+      println("-*_*_*-"*4)
+    }else{
+      println("-*_*_*-"+" "*4+title+" "*4+"-*_*_*-")
+    }
   }
 }
