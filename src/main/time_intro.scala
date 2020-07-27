@@ -33,6 +33,12 @@ object time_intro {
     cut_line()
 
     println(get_n_day_before_date(string_to_date(get_today_cal()), -1))
+    cut_line()
+
+    println(date_to_string(string_to_date("20200701"), "yy-MM-dd"))
+    cut_line()
+
+    println(str.split("-").mkString(""))
   }
 
   def get_today(): Array[String] ={
@@ -49,43 +55,43 @@ object time_intro {
     tmp
   }
 
-  def get_yesterday(pat:String="yyyyMMdd"): String ={
+  def get_yesterday(out_pat:String="yyyyMMdd"): String ={
     // pat指返回的日期格式
-    val dateFormat = new SimpleDateFormat(pat)
+    val dateFormat = new SimpleDateFormat(out_pat)
     val calendar = Calendar.getInstance
     calendar.set(Calendar.HOUR_OF_DAY, -24)
     val yesterday = dateFormat.format(calendar.getTime)
     yesterday
   }
 
-  def get_n_day_before(n:Int, pat:String="yyyyMMdd"): String ={
+  def get_n_day_before(n:Int, out_pat:String="yyyyMMdd"): String ={
     // 获取若干天前的日期，n指定几天前，pat指定返回的日期格式
-    val date_format = new SimpleDateFormat(pat)
+    val date_format = new SimpleDateFormat(out_pat)
     val calendar = Calendar.getInstance
     calendar.set(Calendar.HOUR_OF_DAY, -24*n)
     val the_day = date_format.format(calendar.getTime)
     the_day
   }
 
-  def string_to_date(s: String, pat:String="yyyyMMdd"): Date ={
-    // 注意这里的 pat是指定的输入字符串的格式，如果 pat和输入字符串不匹配，可能会出错！
-    val date = new SimpleDateFormat(pat).parse(s)
+  def string_to_date(s: String, s_pat:String="yyyyMMdd"): Date ={
+    // 注意这里的 pat是输入字符串s的格式，如果 pat和输入字符串不匹配，可能会出错！
+    val date = new SimpleDateFormat(s_pat).parse(s)
     date
   }
 
-  def get_n_day_before_date(date:Date, n:Int,pat:String="yyyyMMdd"): String ={
+  def get_n_day_before_date(date:Date, n:Int, out_pat:String="yyyyMMdd"): String ={
     // pat指返回的日期格式
     val calendar = Calendar.getInstance
     calendar.setTime(date)
     calendar.set(Calendar.HOUR_OF_DAY, -24*n)
-    val date_format = new SimpleDateFormat(pat)
+    val date_format = new SimpleDateFormat(out_pat)
     val the_day = date_format.format(calendar.getTime)
     the_day
   }
 
-  def get_today_cal(pat:String="yyyyMMdd"): String ={
+  def get_today_cal(out_pat:String="yyyyMMdd"): String ={
     // pat指返回的日期格式
-    val date_format = new SimpleDateFormat(pat)
+    val date_format = new SimpleDateFormat(out_pat)
     val calendar = Calendar.getInstance
     date_format.format(calendar.getTime)
   }
@@ -98,5 +104,11 @@ object time_intro {
     val date_format = new SimpleDateFormat(pat)
     val the_day = date_format.format(calendar.getTime)
     the_day
+  }
+
+  def date_to_string(date:Date, pat:String="yyyyMMdd"): String ={
+    // pat指本函数返回的日期格式
+    val date_format = new SimpleDateFormat(pat)
+    date_format.format(date)
   }
 }

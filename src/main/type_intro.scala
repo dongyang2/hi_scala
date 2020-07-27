@@ -62,6 +62,26 @@ object type_intro {
     l2.split(",").foreach(elem=>println(elem.trim))  // trim()可以去掉字符串的首尾空格
     println(l1.split(",").length)
 
+    cut_line("字符串查找")
+    println(fs)
+    println("1".r.findFirstIn(fs))  // 查看有没有
+//    println("0".r.findFirstIn(fs))
+    println(fs.indexOf("1"))
+    println(fs.indexOf("0"))
+    val ind1 = l1.indexOf("run")
+    println(ind1)
+    println(l1.indexOf("a"))
+
+    cut_line("字符串切割")
+    val ind2 = l1.indexOf(".", ind1)
+    println(l1.substring(ind1, ind2))  // 截取的子串，从ind1开始，到ind2前一个结束
+    println(l1.substring(4,4))        // 这种情况返回 ""
+
+    cut_line("字符串替换")
+    println(l1.replace(".","-"))
+    // scala的replace第一个参数不是正则，但replaceAll和replaceFirst的第一个参数都是正则
+    println(l1.replaceFirst(".","-"))
+
 
 
 
@@ -80,10 +100,16 @@ object type_intro {
     val vale = new DecimalFormat("0.000").format(sub)
     println(vale)
 
-
     cut_line()
     val sub2 = i*2/3
     println(format_decimal(sub2))
+
+    cut_line("百分比")
+    val sub3 = 2*1.0/3
+    val val2_percent = java.text.NumberFormat.getPercentInstance.format(sub3)
+    println(val2_percent)
+    println(get_percent(sub3, "0.0%"))
+    println(get_percent(3*1.0/2))
 
   }
 
@@ -91,4 +117,19 @@ object type_intro {
     new DecimalFormat(num_pat).format(num)
   }
 
+  def get_percent(num:Double, pat:String="0.00%"):String={
+    val percent_pat = pat.substring(0, pat.length-1)+"00"
+    val decimal = format_decimal(num, percent_pat)
+    val dot_ind = decimal.indexOf(".")
+    if(dot_ind == -1){
+      decimal.substring(0, decimal.length-2)
+    }else{
+      val decimal_front_part = decimal.substring(0,dot_ind)
+      if (decimal_front_part == "0"){
+        decimal.substring(dot_ind+1, dot_ind+3)+"."+decimal.substring(dot_ind+3)+"%"
+      }else{
+        decimal_front_part+decimal.substring(dot_ind+1, dot_ind+3)+"."+decimal.substring(dot_ind+3)+"%"
+      }
+    }
+  }
 }

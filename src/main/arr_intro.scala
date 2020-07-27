@@ -45,8 +45,9 @@ object arr_intro {
     println(arr1.length)
 
     // 合并数组
-
+    cut_line("合并数组")
     val con_arr = Array.concat(arr1, arr2)
+    println(con_arr)
     erg_arr_str(con_arr)
 
     // 多维数组
@@ -104,6 +105,33 @@ object arr_intro {
     cut_line("聚合数组为字符串")
     arr_b1.append(9)
     println(arr_b1.mkString(","))
+
+    cut_line("看看空数组在ArrayBuffer里的效果")
+    val arr5 = Array[String]()
+    println(arr5.isEmpty)
+    val ab2 = ArrayBuffer[Array[String]]()
+    ab2.append(arr5)
+    println(ab2.isEmpty)
+
+    cut_line("其实只是申明了指向数组的类型的指针")
+    var arr9 =Array[String]()
+    var arr10 = Array[String]()
+    arr9 = Array("null")
+    arr10 = Array("d", "y")
+    arr9.foreach(println)
+    arr10.foreach(println)
+    arr9 = Array("u8p")
+    arr9.foreach(println)
+
+    cut_line("复制某元素99遍")
+    val arr11 = Array("a", "b", "c")
+    arr11.map(x =>{
+      if (x == "b"){
+        (0 until 100).map(_=>x).toList
+      }else{
+        List(x)
+      }
+    }).foreach(println)
 
 
 
@@ -176,9 +204,69 @@ object arr_intro {
     println(and_set)
     println(se5.size)  // 求长度
 
+
+
+    /* Option */
+    cut_line("Option")
+    val sm1:Option[String] = Some("fast")
+    println("值是\t\t类型是\t\n%s\t%s".format(sm1,sm1.getClass.getSimpleName))
+    val sm2 = Some(Array("s", "t"))
+    val tmp1 = sm2.get  // Array
+    println(tmp1, tmp1.getClass.getSimpleName)
+    val tmp2 = sm2.getOrElse("")  // :java.io.Serializable
+    println(tmp2, tmp2.getClass.getSimpleName)
+    val tmp3 = sm2.productElement(0)  // Any
+    println(tmp3, tmp3.getClass.getSimpleName)
+    println(tmp1(1))
+//    println(tmp2(0))  //报错
+//    println(tmp3(0))  //报错
+    cut_line("Option遍历拿值法")
+    val ab_tmp1 = ArrayBuffer[Array[String]]()
+    for(elem<-sm2.iterator) ab_tmp1.append(elem)
+    println(ab_tmp1.isEmpty)
+    println(ab_tmp1(0)(0), ab_tmp1(0)(1))
+    val ab_tmp2 = ArrayBuffer[Array[String]]()
+    for(elem<-None.iterator) ab_tmp2.append(elem)
+    println(ab_tmp2.isEmpty)
+
+    val sm3 = Option("slow")
+    println(sm3, sm3.getClass.getSimpleName)
+    val sm4 = Option(Array("d","y"))
+    val tmp4 = sm4.get
+    println(tmp4(0), tmp4(1))
+
+    cut_line("转换拿值法")
+    val sm4v = sm4.toVector  // 相当于把Option里面的元素套一个Vector的壳，即换壳
+    println(sm4v(0)(0))
+    println(sm3.toVector(0))
+    val sm5 = Option(Array("d","y"),Array("f","u"))
+    val sm5v = sm5.toVector
+    println(sm5v(0)._2(1))
+    // 测试 None的情况
+    val nv = None.toVector
+//    println(nv(0))
+    println("None to vector的情况",nv.isEmpty)
+
+
+
+
+    /* Util */
+    cut_line("ArrayBuffer可以转Array")
+    val arr6 = ab.toArray
+    println(arr6)
+    println(arr6(1))
+
+    cut_line("Array转Set")
+    val arr7 = Array(1, 2, 3, 4, 2)
+    println(arr7.toSet)
+
+    cut_line("Array的map")
+    val arr8 = Array("837|0.0595", "227|0.0575", "50|0.0559")
+    arr8.map(elem =>elem.split("\\|")(0)).foreach(println)  //注意带有竖线的分离需要加两个下划线
+
   }
 
-  def erg_arr_str(arr:Array[String]):Unit={
+  def erg_arr_str(arr:Array[String]){
     // 下标遍历法
     for (i <- arr.indices){
       print(arr(i)+" ")
@@ -195,5 +283,11 @@ object arr_intro {
     }
   }
 
+  def option_to_arr(op:Option[Array[String]]): ArrayBuffer[Array[String]] ={
+    // 把some里的数据拿到。当some为None时，此函数返回的的ab.isEmpty为true
+    val ab_tmp = ArrayBuffer[Array[String]]()
+    for(elem<-op.iterator) ab_tmp.append(elem)
+    ab_tmp
+  }
 
 }
