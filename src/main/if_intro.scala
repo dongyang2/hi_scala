@@ -1,6 +1,7 @@
 // if表达式与逻辑运算符。学习。
 
 package main
+import func_intro.cut_line
 
 object if_intro {
   def main(args: Array[String]): Unit = {
@@ -26,5 +27,9 @@ object if_intro {
     }else{
       println("a is " + a)
     }
+
+    cut_line("类似三元运算符的写法")
+    val d = if (a==10) 10 else 100
+    println(d)
   }
 }

@@ -3,6 +3,7 @@
 package main
 
 import java.io.{File, PrintWriter}
+import func_intro.cut_line
 
 object io_intro {
   def main(args: Array[String]): Unit = {
@@ -30,14 +31,16 @@ object io_intro {
 //    println(s"OK, your favorite star is ${line}")
 
     // 读目录
-    import java.io.File
-
     val dir_path = """./"""
     val dir = new File(dir_path)
     val paths = dir.listFiles().filter(_.isDirectory())
     for (p <- paths){
       println(p)
     }
+
+    cut_line("判断文件是否存在")
+    val tmp_file = new File("./src/main/type_intro.scala")
+    println(tmp_file.exists)
   }
 
   def write_file_arr(path:String, arr:Array[String]){
@@ -47,4 +50,6 @@ object io_intro {
     }
     file_iter_write.close()  // 不加这行写不进去
   }
+
+
 }

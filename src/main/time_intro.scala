@@ -18,7 +18,7 @@ object time_intro {
 //    val pattern = "yyyyMMdd"
 //    println(get_yesterday(pattern))
 
-//    println(get_n_day_before(18))
+//    println(get_n_day_before_today(18))
 
     val str = "2020-06-07"
 //    string_to_date(str)
@@ -64,8 +64,8 @@ object time_intro {
     yesterday
   }
 
-  def get_n_day_before(n:Int, out_pat:String="yyyyMMdd"): String ={
-    // 获取若干天前的日期，n指定几天前，pat指定返回的日期格式
+  def get_n_day_before_today(n:Int, out_pat:String="yyyyMMdd"): String ={
+    // 获取与今天相比n天前的日期，pat指定返回的日期格式
     val date_format = new SimpleDateFormat(out_pat)
     val calendar = Calendar.getInstance
     calendar.set(Calendar.HOUR_OF_DAY, -24*n)

@@ -111,6 +111,10 @@ object type_intro {
     println(get_percent(sub3, "0.0%"))
     println(get_percent(3*1.0/2))
 
+    cut_line("scala允许多个值在一行进行初始化")
+    val tmp1, tmp2, tmp3 = Array[String]()
+    println(tmp1, tmp2, tmp3)
+
   }
 
   def format_decimal(num:Double, num_pat:String="0.00"): String ={
