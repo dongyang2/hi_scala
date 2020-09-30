@@ -1,3 +1,5 @@
+/* coding: utf-8 */
+// Map。学习。
 package main
 
 import main.func_intro.cut_line
@@ -51,5 +53,12 @@ object map_intro {
     val count_mul = scala.collection.mutable.Map("hi"->10,"hello"->20)
     count_mul("hi") += 8
     println(count_mul)
+
+    cut_line("get or else")
+    val get_or_else_res = count.getOrElse("dx", "ah")
+    println(get_or_else_res)
+
+
+
   }
 }

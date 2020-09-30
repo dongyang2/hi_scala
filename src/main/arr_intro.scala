@@ -83,6 +83,10 @@ object arr_intro {
     val f_k_m2 = sort_matrix.take(2)
     erg_matrix(f_k_m2)
 
+    cut_line("Array配合filter")
+    val arr13 = Array(("",1),("b",2),("c",3))
+    arr13.filter(_._1!="").foreach(println)
+
     // Array Buffer
     cut_line("可加减元素的数组 ArrayBuffer")
     val arr_b1 = new ArrayBuffer[Int]()
@@ -123,11 +127,11 @@ object arr_intro {
     arr9 = Array("u8p")
     arr9.foreach(println)
 
-    cut_line("复制某元素99遍")
+    cut_line("复制某元素9遍")
     val arr11 = Array("a", "b", "c")
     arr11.map(x =>{
       if (x == "b"){
-        (0 until 100).map(_=>x).toList
+        (0 until 10).map(_=>x).toList
       }else{
         List(x)
       }
@@ -177,6 +181,7 @@ object arr_intro {
     println(se1)
 
     val se2 = Set(3, 2, 1)  // scala默认的set是不可变set，无法加元素
+    println(se2(1))   // 取值与array一样
     cut_line("检查是否存在某元素")
     println(se2.contains(3))
     cut_line("不可变set删除元素")
@@ -263,6 +268,8 @@ object arr_intro {
     cut_line("Array的map")
     val arr8 = Array("837|0.0595", "227|0.0575", "50|0.0559")
     arr8.map(elem =>elem.split("\\|")(0)).foreach(println)  //注意带有竖线的分离需要加两个下划线
+
+
 
   }
 

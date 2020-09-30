@@ -34,6 +34,7 @@ object type_intro {
 
 
     /* Boolean */
+    cut_line("Boolean")
     val j = true
     val k = false
     println(k)
@@ -41,6 +42,7 @@ object type_intro {
 
 
     /* String */
+    cut_line("String")
     // 字符是单引号
     val l_1 = 'a'
     // 字符串直接搞个双引号就可以了
@@ -91,7 +93,7 @@ object type_intro {
     println("type of m2(full name) \t%s".format(m2.getClass))
     println("type of f(simple name) \t%s".format(f.getClass.getSimpleName))
 
-    cut_line()
+    cut_line("整数除法结果转为小数")
     // *1.0 可以让结果变成小数
     val sub = (f+e.toInt)*1.0/3
     println(sub)
@@ -99,6 +101,12 @@ object type_intro {
     // 然后利用Java的decimal format规范输出
     val vale = new DecimalFormat("0.000").format(sub)
     println(vale)
+
+    val a1 = 10
+    val a2 = 15
+    println(a1/a2)  // 0
+    println(a1/a2.toFloat)  // 0.6666667
+//    println(a1.toFloat/a2)  // 和上面一样
 
     cut_line()
     val sub2 = i*2/3
